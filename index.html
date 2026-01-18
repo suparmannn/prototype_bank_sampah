@@ -73,14 +73,14 @@
 
         <div class="p-4 space-y-6">
             <div>
-                <label class="text-[11px] font-bold text-gray-800">Kode Nasabah / ID GoGreen</label>
-                <div class="flex gap-2 mt-1">
-                    <input type="text" placeholder="Input Manual ID GoGreen" class="flex-1 p-3 border rounded-lg text-sm bg-white outline-none focus:border-green-600">
-                    <button class="bg-[#111827] text-white px-4 py-2 rounded-lg text-[10px] font-bold flex items-center gap-2">
+    <label class="text-[11px] font-bold text-gray-800 uppercase tracking-widest">Input Nomor Resi</label>
+    <div class="flex gap-2 mt-1">
+        <input type="text" id="input-resi-verify" placeholder="Contoh: GG-2026-001" class="flex-1 p-3 border rounded-lg text-sm bg-white outline-none focus:border-green-600">
+      <button class="bg-[#111827] text-white px-4 py-2 rounded-lg text-[10px] font-bold flex items-center gap-2">
                         <span class="w-4 h-4 border border-white/50 rounded-full flex items-center justify-center text-[8px]">✓</span> Validasi
                     </button>
-                </div>
-            </div>
+    </div>
+</div>
 
             <div class="border border-blue-200 bg-blue-50/20 p-4 rounded-lg flex justify-between items-start">
                 <div>
@@ -102,6 +102,8 @@
                     <p class="text-[9px] text-gray-400 font-bold uppercase tracking-wider">ID GoGreen</p>
                     <p class="text-sm font-bold text-blue-900">123456</p>
                 </div>
+                <div><p class="text-[9px] text-gray-400 font-bold uppercase">No Resi</p>
+                    <p class="text-sm font-bold text-blue-900 uppercase">GG-2026-001</p></div>
                 <div>
                     <p class="text-[9px] text-gray-400 font-bold uppercase tracking-wider">CIF</p>
                     <p class="text-sm font-bold text-blue-900">0001122334</p>
@@ -189,7 +191,7 @@
         </div>
 
         <div class="p-4 space-y-3 pb-24">
-            <div class="bg-blue-900 p-4 rounded-2xl text-white mb-6 shadow-md flex justify-between items-center">
+            <div class="bg-green-900 p-4 rounded-2xl text-white mb-6 shadow-md flex justify-between items-center">
                 <div>
                     <p class="text-[9px] uppercase font-bold opacity-70 tracking-widest">Total Masuk Hari Ini</p>
                     <p class="text-xl font-black italic">42.50 Kg</p>
@@ -202,12 +204,12 @@
 
             <h3 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Transaksi Terbaru</h3>
 
-            <div onclick="showDetailList('Siti Nur Aulia', 'GG-2026-001', '12.5 Kg', 'Plastik PET', 'VERIFIED')" class="p-4 border rounded-xl bg-white shadow-sm flex justify-between items-center hover:bg-gray-50 transition-all cursor-pointer">
+           <div onclick="showDetailList('Siti Nur Aulia', 'GG-2026-001', '12.5 Kg', 'Plastik PET', 'VERIFIED')" class="p-4 border rounded-xl bg-white shadow-sm flex justify-between items-center hover:bg-gray-50 transition-all cursor-pointer">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 bg-green-50 rounded-full flex items-center justify-center text-lg">📦</div>
                     <div>
                         <p class="text-xs font-bold text-gray-800">Siti Nur Aulia</p>
-                        <p class="text-[9px] text-gray-400 font-bold uppercase tracking-tighter">GG-2026-001</p>
+                        <p class="text-[9px] text-blue-600 font-bold">ID: 123456 • Resi: GG-2026-001</p>
                     </div>
                 </div>
                 <div class="text-right">
@@ -221,7 +223,7 @@
                     <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-lg">⏳</div>
                     <div>
                         <p class="text-xs font-bold text-gray-800">Budi Setiawan</p>
-                        <p class="text-[9px] text-gray-400 font-bold uppercase tracking-tighter">GG-2026-002</p>
+                         <p class="text-[9px] text-blue-600 font-bold">ID: 654321 • Resi: GG-2026-002</p>
                     </div>
                 </div>
                 <div class="text-right">
@@ -231,6 +233,7 @@
             </div>
         </div>
     </div>
+
   
 
     <div id="modal-detail-dropoff" class="hidden fixed inset-0 modal-overlay z-50 flex items-center justify-center p-6">
@@ -242,6 +245,7 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div><p class="text-[9px] text-gray-400 font-bold uppercase">Nama Nasabah</p><p id="det-name" class="text-xs font-bold text-blue-900">Siti Nur Aulia</p></div>
                     <div><p class="text-[9px] text-gray-400 font-bold uppercase">Kode Resi</p><p id="det-resi" class="text-xs font-bold text-blue-900">GG-2026-001</p></div>
+                    
                 </div>
                 <div>
                     <p class="text-[9px] text-gray-400 font-bold uppercase border-t pt-3 mb-2">Rincian Sampah (View Only)</p>
@@ -347,49 +351,66 @@
     </div>
 
 
-    <div id="modal-detail-sell" class="hidden fixed inset-0 modal-overlay z-50 flex items-center justify-center p-6">
-        <div class="bg-white w-full rounded-3xl overflow-hidden shadow-2xl relative animate-slide-up">
-            <div class="bg-[#1b4332] p-4 text-white flex justify-between items-center">
-                <h3 class="font-bold text-xs uppercase tracking-widest">Detail Request Pickup</h3>
-                <button onclick="closeDetailSell()" class="text-lg opacity-70">✕</button>
-            </div>
+  <div id="modal-detail-sell" class="hidden fixed inset-0 modal-overlay z-50 flex items-center justify-center p-6">
+    <div class="bg-white w-full rounded-3xl overflow-hidden shadow-2xl relative animate-slide-up">
+        <div class="bg-[#1b4332] p-4 text-white flex justify-between items-center">
+            <h3 class="font-bold text-[10px] uppercase tracking-widest">Detail Request Pickup</h3>
+            <button onclick="closeDetailSell()" class="text-lg opacity-70">✕</button>
+        </div>
 
-            <div class="p-5 space-y-5">
-                <div class="flex justify-between items-start border-b pb-3">
-                    <div>
-                        <p id="det-sell-pengepul" class="font-black text-blue-900 text-sm uppercase">PT PENGEPUL JAYA UTAMA</p>
-                        <p id="det-sell-date" class="text-[10px] text-gray-400 font-bold">18 Jan 2026 • 09:00</p>
-                    </div>
-                    <span id="det-sell-status" class="bg-green-100 text-green-700 text-[9px] font-bold px-3 py-1 rounded-full">SUCCESS</span>
-                </div>
-
+        <div class="p-6 space-y-6 max-h-[80vh] overflow-y-auto text-left">
+            <div class="flex justify-between items-start border-b pb-4">
                 <div>
-                    <p class="text-[10px] font-bold text-gray-400 uppercase mb-3 tracking-tighter">Daftar Item & Berat</p>
-                    <div id="det-sell-items" class="space-y-2">
-                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl border border-gray-100">
-                            <span class="text-xs font-bold text-gray-700">Plastik PET</span>
-                            <span class="text-xs font-black text-blue-800">100.00 Kg</span>
-                        </div>
-                    </div>
+                    <p id="det-sell-pengepul" class="font-black text-blue-900 text-lg uppercase tracking-tighter">--</p>
+                    <p id="det-sell-date" class="text-[11px] text-gray-400 font-bold">--</p>
                 </div>
+                <span id="det-sell-status" class="text-[10px] font-black px-3 py-1 rounded-full uppercase">--</span>
+            </div>
 
-                <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100 space-y-2">
-                    <div class="flex justify-between text-[10px]">
-                        <span class="text-gray-500 font-bold">TOTAL BERAT</span>
-                        <span id="det-sell-total-weight" class="font-black text-gray-800">100.00 Kg</span>
-                    </div>
-                    <div class="flex justify-between text-sm border-t border-blue-100 pt-2">
-                        <span class="font-bold text-blue-900">ESTIMASI DANA</span>
-                        <span id="det-sell-total-price" class="font-black text-green-700">Rp 350.000</span>
+            <div>
+                <p class="text-[10px] font-black text-gray-400 uppercase mb-3 tracking-widest">Daftar Item & Berat</p>
+                <div id="det-sell-items" class="space-y-2"></div>
+            </div>
+
+            <div id="pay-info-interbank" class="hidden space-y-3">
+                <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Bukti Transfer Antar Bank</p>
+                <div class="h-48 bg-gray-100 rounded-3xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center relative overflow-hidden">
+                    <span class="text-4xl mb-2">📸</span>
+                    <span class="text-[9px] font-black text-gray-400 uppercase italic">Preview Bukti Pembayaran</span>
+                    <div class="absolute inset-0 bg-green-900/5 flex items-center justify-center">
+                        <p class="text-[14px] font-black text-green-800/20 rotate-12 uppercase tracking-[10px] border-4 border-green-800/10 px-4 py-2 rounded-xl">Verified</p>
                     </div>
                 </div>
             </div>
 
-            <div onclick="showDetailSell('PT Pengepul Jaya Utama', '18 Jan 2026 • 09:00', 'SUCCESS', '100.00', 'Rp 350.000', 'bg-green-100 text-green-700')" 
-     class="p-4 border rounded-2xl bg-white shadow-sm space-y-3 cursor-pointer hover:border-green-300">
-    </div>
+            <div id="pay-info-cbs" class="hidden bg-blue-900 p-5 rounded-[32px] text-white shadow-lg relative overflow-hidden">
+                <p class="text-[9px] font-bold opacity-70 uppercase tracking-widest">History Transaksi CBS</p>
+                <p class="text-[12px] font-medium mt-1 leading-tight">Dana masuk otomatis via CBS Internal Transfer.</p>
+                <p class="text-[12px] font-black mt-3 text-green-400 tracking-wider">Ref ID: GG-TX-778822910</p>
+                <div class="absolute -right-4 -bottom-4 opacity-10 text-6xl italic font-black">CBS</div>
+            </div>
+
+            <div id="info-expired" class="hidden bg-red-50 p-4 rounded-2xl border border-red-100">
+                <p class="text-[10px] text-red-600 font-bold italic text-center">
+                    ⚠ Request Kadaluarsa (Melebihi 24 Jam). Stok dikembalikan ke gudang.
+                </p>
+            </div>
+
+            <div class="bg-gray-50 p-5 rounded-[32px] border border-gray-100 space-y-3">
+                <div class="flex justify-between text-[11px] font-bold text-gray-400 uppercase">
+                    <span>Total Berat</span>
+                    <span id="det-sell-total-weight" class="text-gray-800">-- Kg</span>
+                </div>
+                <div class="flex justify-between items-center border-t pt-3">
+                    <span class="text-xs font-black text-gray-800 uppercase">Dana Penjualan</span>
+                    <span id="det-sell-total-price-final" class="text-xl font-black text-green-700 italic">Rp --</span>
+                </div>
+            </div>
+
+            <button onclick="closeDetailSell()" class="w-full py-4 bg-gray-800 text-white rounded-2xl font-bold text-[10px] uppercase tracking-widest shadow-lg">Tutup Rincian</button>
         </div>
     </div>
+</div>
     
         
     <div id="screen-settlement" class="hidden pb-40">
@@ -501,20 +522,39 @@
                     Stok riil di gudang otomatis terpotong saat status berubah menjadi <span class="font-bold">SUCCESS (Approved by Pengepul)</span>.
                 </p>
             </div>
-        <div onclick="showDetailSell('PT PENGEPUL JAYA UTAMA', '18 Jan 2026 • 09:00', 'SUCCESS', '100.00', 'Rp 350.000', 'bg-green-100 text-green-700')" 
-             class="p-4 border rounded-2xl bg-white shadow-sm space-y-3 cursor-pointer hover:border-green-300 transition-all">
-            <div class="flex justify-between items-start">
-                <div>
-                    <p class="text-[10px] font-bold text-gray-400">18 Jan 2026 • 09:00</p>
-                    <p class="text-xs font-bold text-gray-800 uppercase">PT Pengepul Jaya Utama</p>
-                </div>
-                <span class="bg-green-100 text-green-700 text-[8px] font-bold px-2 py-0.5 rounded-full uppercase">Success</span>
-            </div>
-            <div class="flex justify-between items-center text-[11px] border-t pt-2 mt-2">
-                <span class="text-gray-500">Total Berat: <span class="font-bold text-gray-800">100.00 Kg</span></span>
-                <span class="font-bold text-green-700">Rp 350.000</span>
-            </div>
+
+      <div onclick="showDetailSell('PT PENGEPUL JAYA UTAMA', '18 Jan 2026 • 09:00', 'SUCCESS', '100.00', 'Rp 350.000', 'bg-green-100 text-green-700', 'INTERNAL')" 
+     class="p-4 border rounded-2xl bg-white shadow-sm space-y-3 cursor-pointer hover:border-green-300 transition-all border-l-4 border-l-green-600">
+    <div class="flex justify-between items-start">
+        <div>
+            <p class="text-[10px] font-bold text-gray-400">18 Jan 2026 • 09:00</p>
+            <p class="text-xs font-bold text-gray-800 uppercase tracking-tighter">PT Pengepul Jaya Utama</p>
+            <p class="text-[9px] text-blue-600 font-bold uppercase mt-1">Metode: CBS Internal Transfer</p>
         </div>
+        <span class="bg-green-100 text-green-700 text-[8px] font-bold px-2 py-0.5 rounded-full uppercase">Success</span>
+    </div>
+    <div class="flex justify-between items-center text-[11px] border-t pt-2 mt-2">
+        <span class="text-gray-500">Total Berat: <span class="font-bold text-gray-800">100.00 Kg</span></span>
+        <span class="font-bold text-green-700">Rp 350.000</span>
+    </div>
+</div>
+
+<div onclick="showDetailSell('LAPAK BERKAH RECYCLE', '17 Jan 2026 • 14:20', 'SUCCESS', '50.25', 'Rp 150.750', 'bg-green-100 text-green-700', 'ANTAR', 'BANK BNI')" 
+     class="p-4 border rounded-2xl bg-white shadow-sm space-y-3 cursor-pointer hover:border-green-300 transition-all border-l-4 border-l-orange-400">
+    <div class="flex justify-between items-start">
+        <div>
+            <p class="text-[10px] font-bold text-gray-400">17 Jan 2026 • 14:20</p>
+            <p class="text-xs font-bold text-gray-800 uppercase">Lapak Berkah Recycle</p>
+            <p class="text-[9px] text-orange-600 font-bold uppercase mt-1">Metode: Antar Bank (BNI) 📸</p>
+        </div>
+        <span class="bg-green-100 text-green-700 text-[8px] font-bold px-2 py-0.5 rounded-full uppercase">Success</span>
+    </div>
+    <div class="flex justify-between items-center text-[11px] border-t pt-2 mt-2">
+        <span class="text-gray-500">Total Berat: <span class="font-bold text-gray-800">50.25 Kg</span></span>
+        <span class="font-bold text-green-700">Rp 150.750</span>
+    </div>
+</div>
+
 
         <div onclick="showDetailSell('LAPAK BERKAH RECYCLE', '17 Jan 2026 • 14:20', 'WAITING', '50.25', 'Rp 150.750', 'bg-yellow-100 text-yellow-700')" 
              class="p-4 border rounded-2xl bg-white shadow-sm space-y-3 border-l-4 border-l-yellow-400 cursor-pointer">
@@ -548,27 +588,73 @@
         </div>
 </div>
 
+
 <div id="modal-detail-sell" class="hidden fixed inset-0 modal-overlay z-50 flex items-center justify-center p-6">
-    <div class="bg-white w-full rounded-3xl overflow-hidden shadow-2xl relative animate-slide-up">
+    <div class="bg-white w-full rounded-3xl overflow-hidden shadow-2xl relative animate-slide-up max-w-sm">
         <div class="bg-[#1b4332] p-4 text-white flex justify-between items-center">
-            <h3 class="font-bold text-[10px] uppercase tracking-widest">Detail Transaksi Penjualan</h3>
+            <h3 class="font-bold text-[10px] uppercase tracking-widest">Detail Request Pickup</h3>
             <button onclick="closeDetailSell()" class="text-lg opacity-70">✕</button>
         </div>
-        <div class="p-5 space-y-5">
+
+        <div class="p-5 space-y-5 max-h-[70vh] overflow-y-auto text-left">
+            
             <div class="flex justify-between items-start border-b pb-3">
-                <div><p id="det-sell-pengepul" class="font-black text-blue-900 text-sm uppercase">--</p><p id="det-sell-date" class="text-[10px] text-gray-400 font-bold">--</p></div>
-                <span id="det-sell-status" class="text-[9px] font-bold px-3 py-1 rounded-full uppercase">--</span>
+                <div>
+                    <p id="det-sell-pengepul" class="font-black text-blue-900 text-sm uppercase tracking-tighter">--</p>
+                    <p id="det-sell-date" class="text-[10px] text-gray-400 font-bold tracking-tight">--</p>
+                </div>
+                <span id="det-sell-status" class="text-[9px] font-black px-3 py-1 rounded-full uppercase">--</span>
             </div>
+
             <div>
-                <p class="text-[10px] font-bold text-gray-400 uppercase mb-3">Daftar Item & Berat</p>
-                <div id="det-sell-items" class="space-y-2"></div>
+                <p class="text-[10px] font-black text-gray-400 uppercase mb-3 tracking-widest">Daftar Item & Berat</p>
+                <div id="det-sell-items" class="space-y-2">
+                    </div>
             </div>
-            <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100 space-y-2">
-                <div class="flex justify-between text-[10px] font-bold text-gray-50"><span>TOTAL BERAT</span><span id="det-sell-total-weight">--</span></div>
-                <div class="flex justify-between text-sm border-t border-blue-100 pt-2 font-black text-green-700"><span>DANA PENJUALAN</span><span id="det-sell-total-price">--</span></div>
+
+            <div id="pay-info-interbank" class="hidden space-y-3">
+                <div class="flex justify-between items-center">
+                    <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Bukti Transfer Antar Bank</p>
+                    <p id="det-bank-name" class="text-[10px] font-black text-blue-600 uppercase">--</p>
+                </div>
+                <div class="h-44 bg-gray-100 rounded-3xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center relative overflow-hidden">
+                    <span class="text-4xl mb-2">📸</span>
+                    <span class="text-[9px] font-black text-gray-400 uppercase italic">Preview Bukti Pembayaran</span>
+                    <div class="absolute inset-0 bg-green-900/5 flex items-center justify-center">
+                        <p class="text-[14px] font-black text-green-800/20 rotate-12 uppercase tracking-[10px] border-4 border-green-800/10 px-4 py-2 rounded-xl">Verified</p>
+                    </div>
+                </div>
             </div>
+
+            <div id="pay-info-cbs" class="hidden bg-blue-900 p-5 rounded-[32px] text-white shadow-lg relative overflow-hidden">
+                <p class="text-[9px] font-bold opacity-70 uppercase tracking-widest leading-relaxed">History Transaksi CBS</p>
+                <p class="text-[11px] font-medium mt-1 leading-tight italic">Dana masuk otomatis via CBS Internal Transfer.</p>
+                <p class="text-[11px] font-black mt-3 text-green-400 tracking-wider">Ref ID: GG-TX-778822910</p>
+                <div class="absolute -right-4 -bottom-4 opacity-10 text-6xl italic font-black">CBS</div>
+            </div>
+
+            <div id="info-expired" class="hidden bg-red-50 p-4 rounded-2xl border border-red-100">
+                <p class="text-[10px] text-red-600 font-bold italic text-center leading-tight">
+                    ⚠ Request Kadaluarsa (Melebihi 24 Jam). Stok telah dikembalikan ke gudang.
+                </p>
+            </div>
+
+            <div class="bg-gray-50 p-5 rounded-[32px] border border-gray-100 space-y-3 shadow-inner">
+                <div class="flex justify-between text-[11px] font-bold text-gray-400 uppercase tracking-tighter">
+                    <span>Total Berat Keseluruhan</span>
+                    <span id="det-sell-total-weight" class="text-gray-800">-- Kg</span>
+                </div>
+                <div class="flex justify-between items-center border-t border-gray-200/50 pt-3">
+                    <span class="text-xs font-black text-gray-800 uppercase tracking-tighter">Dana Penjualan</span>
+                    <span id="det-sell-total-price-final" class="text-xl font-black text-green-700 italic">Rp --</span>
+                </div>
+            </div>
+
         </div>
-        <div class="p-4 bg-gray-50"><button onclick="closeDetailSell()" class="w-full py-4 bg-gray-800 text-white rounded-2xl font-bold text-[10px] uppercase">Tutup Rincian</button></div>
+
+        <div class="p-4 bg-gray-50 border-t">
+            <button onclick="closeDetailSell()" class="w-full py-4 bg-gray-800 text-white rounded-2xl font-bold text-[10px] uppercase tracking-widest shadow-lg active:scale-95 transition-transform">Tutup Rincian</button>
+        </div>
     </div>
 </div>
                 
@@ -708,35 +794,59 @@
         document.getElementById('modal-detail-dropoff').classList.add('hidden');
     }
 
-    // Fungsi Menampilkan Detail Jual
-// Fungsi Menampilkan Detail Jual
-function showDetailSell(pengepul, date, status, weight, price, statusClass) {
+/**
+ * Fungsi Menampilkan Detail Jual dengan 4 Kondisi
+ * @param {string} status - 'WAITING', 'SUCCESS', atau 'EXPIRED'
+ * @param {string} method - 'ANTAR' (Antar Bank), 'INTERNAL' (Internal/CBS), atau '-' (untuk Waiting/Expired)
+ */
+function showDetailSell(pengepul, date, status, weight, price, statusClass, method) {
     const modal = document.getElementById('modal-detail-sell');
-    if (modal) {
-        modal.classList.remove('hidden');
-        
-        // Update Data Dasar
-        document.getElementById('det-sell-pengepul').innerText = pengepul;
-        document.getElementById('det-sell-date').innerText = date;
-        
-        const statusEl = document.getElementById('det-sell-status');
-        statusEl.innerText = status;
-        statusEl.className = `text-[9px] font-bold px-3 py-1 rounded-full uppercase ${statusClass}`;
-        
-        document.getElementById('det-sell-total-weight').innerText = weight + " Kg";
-        document.getElementById('det-sell-total-price').innerText = price;
+    if (!modal) return;
 
-        // Simulasi breakdown item
-        const itemContainer = document.getElementById('det-sell-items');
-        if (itemContainer) {
-            itemContainer.innerHTML = `
-                <div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl border border-gray-100 shadow-sm">
-                    <span class="text-xs font-bold text-gray-700 uppercase"> Plastik PET</span>
-                    <span class="text-xs font-black text-blue-800">${weight} Kg</span>
-                </div>
-            `;
+    modal.classList.remove('hidden');
+    
+    // 1. Update Data Dasar
+    document.getElementById('det-sell-pengepul').innerText = pengepul;
+    document.getElementById('det-sell-date').innerText = date;
+    document.getElementById('det-sell-total-weight').innerText = weight + " Kg";
+    
+    const statusEl = document.getElementById('det-sell-status');
+    statusEl.innerText = status;
+    statusEl.className = `text-[10px] font-black px-3 py-1 rounded-full uppercase ${statusClass}`;
+
+    // 2. Kontrol Elemen Berdasarkan Kondisi
+    const infoInterbank = document.getElementById('pay-info-interbank');
+    const infoCBS = document.getElementById('pay-info-cbs');
+    const infoExpired = document.getElementById('info-expired');
+    const priceFinal = document.getElementById('det-sell-total-price-final');
+
+    // Reset Tampilan
+    infoInterbank.classList.add('hidden');
+    infoCBS.classList.add('hidden');
+    infoExpired.classList.add('hidden');
+
+    if (status === 'SUCCESS') {
+        priceFinal.innerText = price; // Tampilkan nominal asli
+        if (method === 'ANTAR') {
+            infoInterbank.classList.remove('hidden'); // Tampilkan Bukti Foto
+        } else if (method === 'INTERNAL') {
+            infoCBS.classList.remove('hidden'); // Tampilkan Kartu Biru CBS
         }
+    } else if (status === 'WAITING') {
+        priceFinal.innerText = "-"; // Detail bayar belum ada
+    } else if (status === 'EXPIRED') {
+        priceFinal.innerText = "-";
+        infoExpired.classList.remove('hidden'); // Tampilkan pesan expired
     }
+
+    // Simulasi Item List
+    const itemContainer = document.getElementById('det-sell-items');
+    itemContainer.innerHTML = `
+        <div class="flex justify-between items-center p-4 bg-gray-50 rounded-2xl border border-gray-100 shadow-sm">
+            <span class="text-sm font-bold text-gray-700 uppercase">Plastik PET</span>
+            <span class="text-sm font-black text-blue-900">${weight} Kg</span>
+        </div>
+    `;
 }
 
 function closeDetailSell() {
